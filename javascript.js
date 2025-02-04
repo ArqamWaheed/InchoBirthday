@@ -8,12 +8,25 @@ function plusSlides(n) {
 function showSlides(n) {
     let i;
     let slides = document.getElementsByClassName("mySlides");
+
     if (n > slides.length) { slideIndex = 1 }
     if (n < 1) { slideIndex = slides.length }
+
     for (i = 0; i < slides.length; i++) {
         slides[i].style.display = "none";
+        const video = slides[i].querySelector('video');
+        if (video) {
+            video.pause();
+        }
     }
+
     slides[slideIndex - 1].style.display = "block";
+
+    const currentSlide = slides[slideIndex - 1];
+    const video = currentSlide.querySelector('video');
+    if (video) {
+        video.play();
+    }
 }
 
 const heartsContainer = document.querySelector('.hearts');
